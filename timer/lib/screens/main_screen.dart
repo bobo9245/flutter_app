@@ -9,7 +9,9 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<MainScreen> {
+final lba800 = Colors.lightBlueAccent[800];
+
+final class _MyWidgetState extends State<MainScreen> {
   int min = 0;
   int sec = 0;
   int milisec = 0;
@@ -88,24 +90,23 @@ class _MyWidgetState extends State<MainScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
+              flex: 1,
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      '${NumberFormat('00').format(min)} : ${NumberFormat('00').format(sec)} : ${NumberFormat('00').format(milisec)}',
-                      style: const TextStyle(
-                        fontSize: 50,
-                        fontWeight: FontWeight.w700,
+                    const SizedBox(height: 40),
+                    Expanded(
+                      child: Text(
+                        '${NumberFormat('00').format(min)} : ${NumberFormat('00').format(sec)} : ${NumberFormat('00').format(milisec)}',
+                        style: TextStyle(
+                          fontSize: 50,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.lightBlueAccent[800],
+                        ),
                       ),
                     ),
-                    SizedBox(height: 10),
-                    // 추가된 부분: 랩 타임을 표시할 부분
-                    if (lapTimes.isNotEmpty)
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: lapTimes.map((lap) => Text(lap)).toList(),
-                      ),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ),
@@ -114,24 +115,71 @@ class _MyWidgetState extends State<MainScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 IconButton(
-                  icon: const Icon(Icons.play_arrow),
+                  icon: Icon(
+                    Icons.play_arrow,
+                    color: lba800,
+                  ),
                   onPressed: startTimer,
-                  iconSize: 30,
+                  iconSize: 40,
+                  color: Colors.lightBlueAccent[800],
                 ),
                 IconButton(
-                  icon: const Icon(Icons.pause),
+                  icon: Icon(
+                    Icons.pause,
+                    color: lba800,
+                  ),
                   onPressed: pauseTimer,
+                  iconSize: 40,
+                  color: lba800,
                 ),
                 IconButton(
-                  icon: const Icon(Icons.stop),
+                  icon: Icon(
+                    Icons.stop,
+                    color: lba800,
+                  ),
                   onPressed: resetTimer,
+                  iconSize: 40,
                 ),
                 // 추가된 부분: 클릭할 때 랩 타임 기록 버튼
                 IconButton(
-                  icon: const Icon(Icons.pets),
+                  icon: Icon(
+                    Icons.pets,
+                    color: lba800,
+                  ),
                   onPressed: recordLapTime,
+                  iconSize: 40,
                 ),
               ],
+            ),
+            const SizedBox(height: 20),
+            Expanded(
+              flex: 3,
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // 추가된 부분: 랩 타임을 표시할 부분
+                    if (lapTimes.isNotEmpty)
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: lapTimes
+                            .map(
+                              (lap) => Column(
+                                children: [
+                                  Text(lap,
+                                      style: TextStyle(
+                                        color: Colors.lightBlueAccent[800],
+                                        fontSize: 20,
+                                      )),
+                                  const SizedBox(height: 4),
+                                ],
+                              ),
+                            )
+                            .toList(),
+                      ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
@@ -139,6 +187,7 @@ class _MyWidgetState extends State<MainScreen> {
       bottomNavigationBar: BottomAppBar(
         height: 30,
         color: Colors.lightBlueAccent[100],
+        elevation: 0,
       ),
     );
   }
