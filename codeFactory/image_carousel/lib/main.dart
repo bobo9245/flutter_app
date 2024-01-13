@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:image_carousel/screens/home_screen.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(MaterialApp(home: HomeScreen()));
 }
 
 class MainApp extends StatelessWidget {
