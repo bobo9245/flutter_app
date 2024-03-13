@@ -1,20 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_practice/screens/mainScreen.dart';
 
 void main() {
-  runApp(const MainApp());
-}
-
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+  runApp(
+    MaterialApp(
+      home: mainScreen(),
+      theme: ThemeData(
+        colorScheme: ColorScheme.light(),
+        textTheme: TextTheme(
+          bodyMedium: TextStyle(
+            fontWeight: FontWeight.normal,
+            fontSize: 28,
+          ),
         ),
+        // const ColorScheme(
+        //   brightness: Brightness.light,
+        //   primary: Colors.indigo,
+        //   onPrimary: Colors.indigo,
+        //   secondary: Colors.green,
+        //   onSecondary: Colors.green,
+        //   error: Colors.redAccent,
+        //   onError: Colors.redAccent,
+        //   background: Colors.black12,
+        //   onBackground: Colors.black12,
+        //   surface: Colors.deepPurple,
+        //   onSurface: Colors.white,
+        // ),
+        //
       ),
-    );
-  }
+    ),
+  );
 }
