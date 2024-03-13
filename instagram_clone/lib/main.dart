@@ -12,7 +12,7 @@ class InstaCloneApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        colorScheme: const ColorScheme.light(
+        colorScheme: const ColorScheme.dark(
           primary: Colors.white,
           secondary: Colors.black,
         ),
@@ -21,7 +21,6 @@ class InstaCloneApp extends StatelessWidget {
           showUnselectedLabels: false,
           selectedItemColor: Colors.black,
         ),
-        useMaterial3: true,
       ),
       home: const InstaCloneHome(),
     );
